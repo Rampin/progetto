@@ -4,17 +4,9 @@
       <h3 class="text-primary text-center mb-4">Search Models by name</h3>
       <form [formGroup]="info" (ngSubmit)="onSubmit(toolTip)">
         <div class="input-group mb-3">
-          <input type="text"
-                 class="form-control"
-                 formControlName="nome"
-                 placeholder="search for models"
-                 required
-                 #toolTip="ngbTooltip"
-                 ngbTooltip="Enter the name"
-                 tooltipClass="message"
-                 triggers="manual"
-                 [autoClose]="false"
-          >
+          <input type="text" class="form-control" formControlName="nome" placeholder="search for models" required
+            #toolTip="ngbTooltip" ngbTooltip="Enter the name" tooltipClass="message" triggers="manual"
+            [autoClose]="false">
           <div class="input-group-append">
             <button type="submit" class="btn btn-outline-info">Search</button>
           </div>
@@ -46,10 +38,11 @@
                     <span class="text-muted">Potenza: </span>
                     {{ modello.potenza }}
                   </li>
-                  <li class="list-group-item text-info">
+                  <li class="list-group-item text-info" [ngbPopover]="showMarca">
                     <span class="text-muted">Marca: </span>
-                    {{ marca }}
+                    <span>{{ marca }}</span>
                   </li>
+
                 </ul>
               </ng-container>
             </ng-template>
@@ -61,4 +54,24 @@
       </div>
     </div>
   </div>
+  <ng-template #showMarca class="popover" role="tooltip">
+
+    <h3 class="popover-header">{{marca}}</h3>
+    <div class="arrow"></div>
+    <div class="popover-body">
+      <ul class="list-group list-group-flush text-nowrap">
+        <li class="list-group-item text-info">
+          <span class="text-muted">Anno: </span>
+          {{fondazione}}
+        </li>
+        <li class="list-group-item text-info">
+          <span class="text-muted">Website: </span>
+          <a href="{{web}}">{{ web }}</a>
+        </li>
+      </ul>
+
+    </div>
+  </ng-template>
+
+
 </main>

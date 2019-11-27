@@ -21,6 +21,8 @@ export class SearchModelComponent implements OnInit {
   marca: string;
   messaggio: string;
   isCollapsed = true;
+  web:string;
+  fondazione:number;
 
   constructor(private fb: FormBuilder, private modelSvc: ModelDataService, private brandSvc: BrandDataService) { }
 
@@ -41,6 +43,8 @@ export class SearchModelComponent implements OnInit {
             .subscribe((response: any) => {
               const queryResult: QueryResult = response;
               this.marca = queryResult.esito.marca[0].nome;
+              this.fondazione = queryResult.esito.marca[0].fondazione;
+              this.web = queryResult.esito.marca[0].website;
               this.isCollapsed = false;
             }, (error: any) => {
               this.messaggio = 'HTTP error!<br><br>' + error.message;
