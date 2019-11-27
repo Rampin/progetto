@@ -38,13 +38,20 @@
 
           <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <label for="marca">Marca:</label>
-            <select class="browser-default custom-select" type="text" formControlName="marca" id="marca" [ngClass]="{
+            <select class="browser-default custom-select" type="text" formControlName="idMarca" id="marca" [ngClass]="{
                       'form-control mb-1': true,
                       'input-err': marcaCtrl
                      }" required autofocus (input)="check('marca')" (blur)="check('marca')">
-              <option value="" selected class="Place">marca</option>
-              <option *ngFor="let marca of listaMarche">
+
+
+              <option value="" selected class="Place" >marca</option>  <!--Purace horuda-->
+
+
+              <option *ngFor="let marca of listaMarche" value="{{marca.idMarca}}">
                 {{ marca.nome }}</option>
+
+
+
             </select>
             <small class="text-danger" [ngStyle]="{ 'visibility': marcaCtrl ? 'visible' : 'hidden' }">Enter the brand
             </small>

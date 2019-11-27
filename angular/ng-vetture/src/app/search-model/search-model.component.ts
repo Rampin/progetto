@@ -16,7 +16,7 @@ export class SearchModelComponent implements OnInit {
   info: FormGroup = this.fb.group({
     nome: ['', Validators.required]
   });
-  listaModelli: Array<any>;
+  listaModelli: Array<Modello>;
   modelliTrovati: number;
   marca: string;
   messaggio: string;

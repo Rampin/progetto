@@ -27,6 +27,7 @@ export class InsertModelComponent implements OnInit {
   messaggio: string;
   messaggioCtrl = false;
 
+
   constructor(private fb: FormBuilder, private modelSvc: ModelDataService, private modalSvc: NgbModal, private brandSvc: BrandDataService) { }
 
 
@@ -49,7 +50,8 @@ export class InsertModelComponent implements OnInit {
           Validators.required,
           Validators.pattern(/^[0-9]{3,6}$/)
         ])
-      ]
+      ],
+      idMarca: ['']
     });//aggiungi qui parametro
 
 
@@ -58,7 +60,7 @@ export class InsertModelComponent implements OnInit {
       .subscribe((response: any) => {
         const queryResult: QueryResult = response;
         this.listaMarche = queryResult.esito.marca;
-    
+
       }, (error: any) => {
         setTimeout(() => {
           this.messaggio = 'No brands found!<br><br>HTTP error!<br><br>' + error.message;
@@ -77,6 +79,7 @@ export class InsertModelComponent implements OnInit {
         break;
       case 'potenza':
         this.potenzaCtrl = ctrl;
+        break;
     }
   }
 
@@ -95,7 +98,7 @@ export class InsertModelComponent implements OnInit {
   }
 
   openModal(content: any) {
-    this.modalSvc.open(content, {ariaLabelledBy: 'modal-basic-title'}).result
+    this.modalSvc.open(content, { ariaLabelledBy: 'modal-basic-title' }).result
       .then(() => this.modelloFG.reset());
   }
 }

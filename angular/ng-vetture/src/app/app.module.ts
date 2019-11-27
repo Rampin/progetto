@@ -22,6 +22,7 @@ import { PricePipe } from './pipes/price.pipe';
 import { InsertModelComponent } from './insert-model/insert-model.component';
 import { SearchModelComponent } from './search-model/search-model.component';
 import { ShowAllModelsComponent } from './show-all-models/show-all-models.component';
+import { UpdateModelComponent } from './update-model/update-model.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ShowAllModelsComponent } from './show-all-models/show-all-models.compon
     PricePipe,
     InsertModelComponent,
     SearchModelComponent,
-    ShowAllModelsComponent
+    ShowAllModelsComponent,
+    UpdateModelComponent
   ],
   imports: [
     BrowserModule,
