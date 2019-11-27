@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModelDataService } from '../model/model-data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Marca } from '../model/brand';
+import { Modello } from '../model/model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateResult } from '../model/update-result';
 
@@ -12,7 +12,7 @@ import { UpdateResult } from '../model/update-result';
 })
 export class UpdateModelComponent implements OnInit {
 
-  @Input() nModello: any ;
+  @Input() nModello: Modello ;
   @Output() conferma = new EventEmitter<boolean>();
   modelloFG: FormGroup;
 
