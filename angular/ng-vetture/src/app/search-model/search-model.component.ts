@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ModelDataService } from '../model/model-data.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Marca } from '../model/brand';
+import { Modello } from '../model/model';
 import { QueryResult } from '../model/query-result';
 import { BrandDataService } from '../model/brand-data.service';
 
@@ -18,7 +18,7 @@ export class SearchModelComponent implements OnInit {
   });
   listaModelli: Array<any>;
   modelliTrovati: number;
-  marca:any;
+  marca: string;
   messaggio: string;
   isCollapsed = true;
 
@@ -37,6 +37,16 @@ export class SearchModelComponent implements OnInit {
           const queryResult: QueryResult = response;
           this.listaModelli = queryResult.esito.modello;
           this.modelliTrovati = this.listaModelli.length;
+          this.brandSvc.getBrandById(this.listaModelli[0].idMarca)
+            .subscribe((response: any) => {
+              const queryResult: QueryResult = response;
+              this.marca = queryResult.esito.marca[0].nome;
+              this.isCollapsed = false;
+            }, (error: any) => {
+              this.messaggio = 'HTTP error!<br><br>' + error.message;
+              this.isCollapsed = false;
+            });
+
           this.isCollapsed = false;
         }, (error: any) => {
           this.messaggio = 'HTTP error!<br><br>' + error.message;
