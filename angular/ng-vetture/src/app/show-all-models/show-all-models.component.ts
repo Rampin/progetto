@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ModelDataService } from '../model/model-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Modello } from '../model/model';
+import { Marca } from '../model/brand';
 import { QueryResult } from '../model/query-result';
 import { UpdateResult } from '../model/update-result';
+import { IfStmt } from '@angular/compiler';
+import { BrandDataService } from '../model/brand-data.service';
 
 
 @Component({
@@ -13,6 +16,12 @@ import { UpdateResult } from '../model/update-result';
 })
 export class ShowAllModelsComponent implements OnInit {
   listaModelli: Array<Modello>;
+
+  listaMarche: Array<Marca>;
+  marche: {} = {};
+  fondazioni: {} = {};
+  website: {} = {};
+  aux:string ="";
 
   messaggio: string;
 
@@ -24,7 +33,7 @@ export class ShowAllModelsComponent implements OnInit {
 
   alertCtrl = false;
 
-  constructor(private modelSvc: ModelDataService, private modalSvc: NgbModal) { }
+  constructor(private modelSvc: ModelDataService, private modalSvc: NgbModal, private brandSvc: BrandDataService) { }
 
   ngOnInit() {
     this.modelSvc.getAllModels()
@@ -32,12 +41,28 @@ export class ShowAllModelsComponent implements OnInit {
         const queryResult: QueryResult = response;
         this.listaModelli = queryResult.esito.modello;
         this.collectionSize = this.listaModelli.length;
+        if (this.collectionSize != 0) {
+          for (let i = 0; i < this.collectionSize; i++) {
+            this.brandSvc.getBrandById(this.listaModelli[i].idMarca)
+              .subscribe((response: any) => {
+                const queryResult: QueryResult = response;
+                this.marche[this.listaModelli[i].idMarca] = queryResult.esito.marca[0].nome;
+                this.fondazioni[this.listaModelli[i].idMarca]=queryResult.esito.marca[0].fondazione;
+                this.website[this.listaModelli[i].idMarca]=queryResult.esito.marca[0].website;
+              }, (error: any) => {
+                setTimeout(() => {
+                  this.messaggio = 'No models found!<br><br>HTTP error!<br><br>' + error.message;
+                }, 7000);
+              });
+          }
+        }
       }, (error: any) => {
         setTimeout(() => {
           this.messaggio = 'No models found!<br><br>HTTP error!<br><br>' + error.message;
         }, 7000);
       });
   }
+
 
   updateModel(modello: Modello, modalUpdate: any) {
     this.nuovoModello = modello;

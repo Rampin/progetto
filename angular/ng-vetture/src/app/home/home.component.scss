@@ -5,3 +5,11 @@ ngb-carousel:focus {
 ngb-carousel img {
     width: 60%;
 }
+
+::ng-deep {
+    .carousel-item {
+      transition: opacity 2.5s ease!important;
+      display: block!important;
+      opacity: 0;
+   }
+}

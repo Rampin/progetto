@@ -24,7 +24,11 @@
           <td>{{ modello.nome }}</td>
           <td>{{ modello.cilindrata }}</td>
           <td>{{ modello.potenza }}</td>
-          <td>{{ modello.idMarca }}</td>
+         
+            <td>
+              {{ marche[modello.idMarca] }}
+           
+        
           <td>
             <div ngbDropdown placement="bottom-right" class="d-inline-block">
               <button id="choose" class="btn btn-outline-dark btn-sm text-truncate" ngbDropdownToggle>choose</button>
@@ -84,4 +88,7 @@
       </div>
     </div>
   </ng-template>
+
+
+
 </main>
