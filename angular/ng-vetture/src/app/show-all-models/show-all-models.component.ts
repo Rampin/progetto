@@ -31,7 +31,6 @@ export class ShowAllModelsComponent implements OnInit {
       .subscribe((response: any) => {
         const queryResult: QueryResult = response;
         this.listaModelli = queryResult.esito.modello;
-        console.log('Bu', this.listaModelli.length);
         this.collectionSize = this.listaModelli.length;
       }, (error: any) => {
         setTimeout(() => {
