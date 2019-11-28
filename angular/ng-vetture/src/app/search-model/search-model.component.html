@@ -55,21 +55,22 @@
     </div>
   </div>
   <ng-template #showMarca class="popover" role="tooltip">
+    <div class="fullfill">
 
-    <h3 class="popover-header">{{marca}}</h3>
-    <div class="arrow"></div>
-    <div class="popover-body">
-      <ul class="list-group list-group-flush text-nowrap">
-        <li class="list-group-item text-info">
-          <span class="text-muted">Anno: </span>
-          {{fondazione}}
-        </li>
-        <li class="list-group-item text-info">
-          <span class="text-muted">Website: </span>
-          <a href="{{web}}">{{ web }}</a>
-        </li>
-      </ul>
-
+      <h3 class="popover-header">{{marca}}</h3>
+      <div class="arrow"></div>
+      <div class="popover-body">
+        <ul class="list-group list-group-flush text-nowrap">
+          <li class="list-group-item text-info">
+            <span class="text-muted">Anno: </span>
+            {{fondazione}}
+          </li>
+          <li class="list-group-item text-info">
+            <span class="text-muted">Website: </span>
+            <a href="{{web}}">{{ web }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </ng-template>
 
