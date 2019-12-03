@@ -7,23 +7,79 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1,
 shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
-    #img {
-      text-align: center;
+    .loader {
+      height: 100px;
+      -webkit-animation: spin 2s linear infinite;
+      /* Safari */
+      animation: spin 2s linear infinite;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+      padding-top: 20%;
+      padding-bottom: 20%;
+
     }
 
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-filter: opacity(1);
+      }
 
+      25% {
+        -webkit-filter: opacity(0.5);
+      }
+
+      50% {
+        -webkit-filter: opacity(0.2);
+      }
+
+      75% {
+        -webkit-filter: opacity(0.5);
+      }
+
+      100% {
+        -webkit-filter: opacity(1);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        filter: opacity(1);
+      }
+
+      25% {
+        filter: opacity(0.5);
+      }
+
+      50% {
+        filter: opacity(0.2);
+      }
+
+      75% {
+        filter: opacity(0.5);
+      }
+
+      100% {
+        filter: opacity(1);
+      }
+    }
   </style>
 
 </head>
 
 <body>
   <app-root>
-  </app-root>
+
+      <img src='./assets/img/logo.png' class='loader'>
+
+  </app-root> 
+ 
 </body>
 
 </html>
